@@ -22,6 +22,23 @@ export function fillTemplate(template: string, vars: Record<string, string> = {}
     .trim();
 }
 
+/** Reads `system_prompts/<name>.md`, or throws a clear error naming the missing file. */
+function readPromptFile(name: string): string {
+  const file = path.join(fromRoot(SYSTEM_PROMPTS_DIR), `${name}.md`);
+  if (!fs.existsSync(file))
+    throw new AppError(`System prompt file not found: ${SYSTEM_PROMPTS_DIR}/${name}.md`, 500);
+  return fs.readFileSync(file, "utf8");
+}
+
+/**
+ * Replaces `{{> name}}` with the text of `system_prompts/<name>.md`, so shared parts
+ * (e.g. the looks list in styles.md) live in one file. One level deep; names are word characters only.
+ * @param template - Raw prompt file text.
+ */
+export function expandIncludes(template: string): string {
+  return template.replace(/\{\{>\s*(\w+)\s*\}\}/g, (_, name: string) => readPromptFile(name).trim());
+}
+
 /**
  * Reads a stage's instructions from `system_prompts/<name>.md`, fresh on every call,
  * so edits apply without restarting the server.
@@ -29,8 +46,5 @@ export function fillTemplate(template: string, vars: Record<string, string> = {}
  * @param vars - Values for its `{{placeholders}}`.
  */
 export function loadSystemPrompt(name: SystemPromptName, vars?: Record<string, string>): string {
-  const file = path.join(fromRoot(SYSTEM_PROMPTS_DIR), `${name}.md`);
-  if (!fs.existsSync(file))
-    throw new AppError(`System prompt file not found: ${SYSTEM_PROMPTS_DIR}/${name}.md`, 500);
-  return fillTemplate(fs.readFileSync(file, "utf8"), vars);
+  return fillTemplate(expandIncludes(readPromptFile(name)), vars);
 }

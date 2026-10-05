@@ -11,10 +11,12 @@ The instructions the AI gets at each stage. **Edit these to refine how morpheFlo
 | `blender_agent.md` | 7–8 Build / Iterate | Drive Blender through MCP tools and recipes |
 | `suggestions.md` | 2 and 8 | Offer 3–5 idea chips (e.g. "kitsune instead of fox?") |
 | `comfy_suggestor.md` | 4 ComfyUI (side panel) | Advise on nodes/LoRAs/checkpoints; never installs anything |
+| `styles.md` | 6–8 (shared) | The looks Blender can build (voxel, low poly, PS1, toon, smooth, realistic) and render choices (full or low-res). Included by `build_plan.md` and `blender_agent.md`. |
 
 ## Rules
 
 - `{{name}}` placeholders are filled in by the server. A missing value is an error, so typos surface immediately.
+- `{{> file}}` pulls in `system_prompts/file.md` (e.g. `{{> styles}}`), so shared text lives in one place.
 - Lines inside `<!-- -->` are notes for humans and are stripped before sending.
 - Keep prompts short: every line is paid for on every call.
 - When asking for JSON, show the exact shape. The server validates it.

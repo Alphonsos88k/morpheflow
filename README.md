@@ -51,7 +51,7 @@ What works today, and what's coming next.
 | **Setup checks** | Finds Blender and ComfyUI, compares with the newest release, links to official downloads | ✅ |
 | **Cost tracking** | Token usage and estimated cost per session | ✅ |
 | **Clarify / Enhanced prompt / Build plan** | Questions, model-aware prompts, and a plan you approve | 🚧 next |
-| **Voxel kit** | Natural voxel hair, fur, beards, and wings; "bright isometric" look | 🚧 planned |
+| **Looks** | Voxel, low poly, PS1 retro, toon, smooth, or realistic models, rendered full-size or low-res pixelated; picked from your prompt and references | 🚧 guide in place, recipes planned |
 | **Export** | GLB/glTF for three.js, FBX, OBJ, USD, renders | 🚧 planned |
 
 </details>
