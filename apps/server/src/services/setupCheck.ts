@@ -51,7 +51,9 @@ export function compareVersions(a: string, b: string): number {
  * @returns "4.2", or null when the folder name doesn't say.
  */
 export function versionFromPath(exe: string): string | null {
-  return path.dirname(exe).match(/Blender[ -]?(\d+\.\d+)/i)?.[1] ?? null;
+  // Strip the file name by hand: path.dirname ignores "\" on Linux (CI), which broke this there.
+  const folder = exe.replace(/[\\/][^\\/]*$/, "");
+  return folder.match(/Blender[ -]?(\d+\.\d+)/i)?.[1] ?? null;
 }
 
 const versionCache = new Map<string, string | null>();
