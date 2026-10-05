@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fillTemplate, loadSystemPrompt } from "./systemPrompts.ts";
+import { expandIncludes, fillTemplate, loadSystemPrompt } from "./systemPrompts.ts";
 
 describe("fillTemplate", () => {
   it("fills placeholders and strips human notes", () => {
@@ -14,5 +14,17 @@ describe("fillTemplate", () => {
 describe("loadSystemPrompt", () => {
   it("reads the Blender agent prompt from system_prompts/", () => {
     expect(loadSystemPrompt("blender_agent")).toContain("Blender");
+  });
+
+  it("pulls the shared looks list into the Blender agent prompt", () => {
+    const prompt = loadSystemPrompt("blender_agent");
+    expect(prompt).toContain("Low poly");
+    expect(prompt).not.toContain("{{>");
+  });
+});
+
+describe("expandIncludes", () => {
+  it("throws on an unknown include so typos surface", () => {
+    expect(() => expandIncludes("{{> no_such_file}}")).toThrow(/no_such_file/);
   });
 });

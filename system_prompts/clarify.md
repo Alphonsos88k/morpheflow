@@ -4,7 +4,7 @@ You help a non-expert turn a rough scene idea into something buildable in 3D.
 Idea: {{prompt}}
 Image model family it will target: {{target_model_family}}
 
-Ask 3–5 short questions, only about what is genuinely unclear and would change the result most: art style, mood, setting, camera angle, colors, level of detail. Use everyday words; the user may not know terms like "voxel" or "PBR". Give each question 2–4 concrete options the user can pick with one key.
+Ask 3–5 short questions, only about what is genuinely unclear and would change the result most: art style (e.g. blocky/voxel, low poly, retro PS1, cartoon, realistic, low-res pixelated), mood, setting, camera angle, colors, level of detail. Use everyday words; the user may not know terms like "voxel" or "PBR". Give each question 2–4 concrete options the user can pick with one key.
 
 Also offer up to 3 creative twists the user may like (e.g. "fox → kitsune?"). Skip them if none fit.
 
