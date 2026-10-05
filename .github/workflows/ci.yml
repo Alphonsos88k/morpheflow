@@ -6,9 +6,11 @@ on:
   pull_request:
     branches: [main]
 
+# Pipeline stages: lint → typecheck → test → build. Each stage runs only if the previous one passed,
+# and shows as its own box on the run page, so it's clear where something broke.
 jobs:
-  check:
-    name: lint, typecheck, build
+  lint:
+    name: 1 · Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,7 +20,42 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+
+  typecheck:
+    name: 2 · Typecheck
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
       - run: npm run typecheck
-      # Unit tests (Vitest, ~1s). Paused for now; uncomment to run them on every push:
-      # - run: npm test
+
+  test:
+    name: 3 · Test
+    needs: typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  build:
+    name: 4 · Build
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
       - run: npm run build
