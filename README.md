@@ -69,3 +69,16 @@ Most changes happen in three folders:
 2. **Code + app refinement**: solid structure, final look, stable
 3. **Bulk of the features**: full workflows, voxel kit, export
 4. **Missed features + feedback**: tuning and extras driven by real use
+
+## Versioning
+
+Versions are `MAJOR.MINOR.PATCH` and are set automatically from commit messages when a PR merges into `main`:
+
+| Commit starts with | Bump | Example |
+|---|---|---|
+| `fix:`, `perf:`, `refactor:` | patch (1.2.**3**) | `fix: close button off-center at 125% scaling` |
+| `feat:` | minor (1.**3**.0) | `feat: custom background picker` |
+| `feat!:` / `fix!:` or a `BREAKING CHANGE:` footer | major (**2**.0.0) | `feat!: new session file format` |
+| `docs:`, `chore:`, `style:`, `test:` | none | `docs: update setup steps` |
+
+Each release gets a changelog entry and downloadable source (`.zip` and `.tar.gz`).
