@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Builds
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+# Secrets & local config (API keys live here, never commit)
+.env
+.env.*
+!.env.example
+config/*.local.json
+config/secrets*
+
+# Generated outputs (images, .blend versions, exports) and per-session reference images
+outputs/
+refs/
+*.blend1
+*.blend2
+
+# Python (blender-mcp / helper scripts)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editors / OS
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Private: design docs + AI assistant files (never uploaded)
+docs/
+CLAUDE.md
+.claude/
+
+# Release / packaging artifacts
+*.zip
+*.tar.gz
+.lint-report.log
