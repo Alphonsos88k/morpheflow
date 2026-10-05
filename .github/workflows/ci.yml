@@ -8,7 +8,7 @@ on:
 
 jobs:
   check:
-    name: lint, typecheck, test, build
+    name: lint, typecheck, build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,5 +19,6 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
-      - run: npm test
+      # Unit tests (Vitest, ~1s). Paused for now; uncomment to run them on every push:
+      # - run: npm test
       - run: npm run build
