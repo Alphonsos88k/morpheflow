@@ -6,7 +6,7 @@
 [![CI](https://github.com/Alphonsos88k/morpheflow/actions/workflows/ci.yml/badge.svg)](https://github.com/Alphonsos88k/morpheflow/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
 ![Status](https://img.shields.io/badge/status-alpha-orange)
-![Platform](https://img.shields.io/badge/platform-Windows%2011-0078D6)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%C2%B7%20Linux%20(partial)-0078D6)
 ![Node](https://img.shields.io/badge/node-22%2B-339933)
 ![Blender](https://img.shields.io/badge/Blender-3.1%2B-F5792A)
 
@@ -23,7 +23,7 @@ Example: `anthro, bipedal, tiger man, minecraft dungeons rendering`
 | | |
 |---|---|
 | **Status** | Alpha. The app runs: prompt, step rail, settings, sessions, ComfyUI and Blender connections. The full idea-to-scene workflow is being built. |
-| **Runs on** | Windows 11 desktop browsers (mobile isn't supported) |
+| **Runs on** | **Windows 11:** everything. **macOS / Linux:** the app runs (`npm run dev`), but Browse buttons, `start.bat`, and auto-detecting Blender / ComfyUI are Windows-only for now, so type paths in Settings. Desktop browsers only. |
 | **Start it** | Double-click `start.bat`, then open http://127.0.0.1:5173 |
 | **You'll need** | Node.js 22+, Blender 3.1+ with the blender-mcp addon, `uv`, and an AI provider key. ComfyUI is optional. |
 | **License** | [AGPL-3.0](LICENSE) |
